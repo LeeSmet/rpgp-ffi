@@ -1,0 +1,28 @@
+[package]
+name = "rpgp-ffi"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+libc = "0.2"
+hex = "0.4"
+failure = "0.1"
+rand = "0.7"
+sha2 = "0.10"
+smallvec = "1"
+
+[dependencies.pgp]
+package = "pgp"
+version = "0.7"
+
+[build-dependencies]
+cbindgen = "0.20"
+
+[features]
+default = []
+nightly = ["pgp/nightly"]
+asm = ["pgp/asm", "nightly"]
